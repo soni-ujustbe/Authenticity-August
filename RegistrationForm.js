@@ -23,7 +23,7 @@ const threecheckdata = [
     
 ];
 
-const RegistrationForm = () => {
+const PostForm = () => {
 
     //state used for form
     const [phoneNum, setphoneNum] = useState('')
@@ -259,40 +259,8 @@ const RegistrationForm = () => {
             }
 
         }
-
-        const getSingleAdminDoc = async () => {
-
-            const isLogin = localStorage.getItem("ucore");
-            const usersDetails = JSON.parse(isLogin);
-            console.log(usersDetails);
-    
-            const docRef = doc(db, "AdminMonthlyMeet", eventName);
-            const docSnap = await getDoc(docRef);
-    
-            if (docSnap.exists()) {
-                setsingleAdminUsers(docSnap.data());
-                console.log(singleAdminUsers);
-                console.log("Admin Document data:", docSnap.data());
-                //   console.log("Admin Document data:", docSnap.data().formimage);
-                setformbgImage(docSnap.data().formImgUrls);
-                setmobileFormbg(docSnap.data().mobileUrls);
-                setwhatsappgroup(docSnap.data().whatsappLink);
-                seteventName(docSnap.data().eventName);
-                console.log(docSnap.data().whatsappLink);
-    
-                console.log(eventName);
-    
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-    
-    
-    
-        }
         // getContent();
         getsingleDoc();
-        getSingleAdminDoc();
     }, []);
 
 
@@ -326,16 +294,11 @@ const RegistrationForm = () => {
 
                 {
                     formsubmit ? <div className="sucess">
-                    <h2> Thank you for sharing your responses.</h2>
-                    <h4> Kindly join the WhatsApp Group </h4>
-                    <div className='whatsappLink'>
-                        <div className='walogo'>
-                            <Image src={walogo} layout='responsive' />
-                        </div>
-                        <Link href={whatsappgroup} ><a className="whatsappbtn">Join WhatsApp Group</a></Link>
-                    </div>
-                    <Link href="/dashboard" ><a className="homelink">Go back to home to get zoom meeting link</a></Link>
-                </div> : <div>
+                        <h2>  Thank you for sharing your responses. </h2>
+
+                        <Link href="/dashboard" ><a className="homelink">Go back to home</a></Link>
+
+                    </div> : <div>
                         <form>
                             {/* {
                         error?<div className="error"><p>required</p></div>:null
@@ -825,4 +788,4 @@ const RegistrationForm = () => {
     )
 }
 
-export default RegistrationForm
+export default PostForm

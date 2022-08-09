@@ -291,9 +291,10 @@ const PostForm = () => {
     
         }
 
-        getSingleAdminDoc();
+        
         // getContent();
         getsingleDoc();
+        getSingleAdminDoc();
     }, []);
 
 

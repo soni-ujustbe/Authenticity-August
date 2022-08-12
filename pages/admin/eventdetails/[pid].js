@@ -641,30 +641,20 @@ const Eventdetail = ({ username }) => {
               
               <th>Question 1</th>
               <th>Question 2</th>
-              <th>Question 2 input</th>
+              {/* <th>Question 2 input</th> */}
               <th>Question 3</th>
-              <th>Question 3 input</th>
+              {/* <th>Question 3 input</th> */}
               
               <th>Question 4</th>
-              <th>Question 4 input</th>
+              {/* <th>Question 4 input</th> */}
              
               <th>Question 5</th>
-              <th>Question 5 input</th>
+              {/* <th>Question 5 input</th> */}
              
             
+              <th>Question 6</th>
               <th>Ph No.</th>
               <th>login time</th>
-
-              <th>Question 1</th>
-              <th>Question 1 input</th>
-              <th>Question 2</th>
-              <th>Question 2 input</th>
-              <th>Question 3</th>
-              <th>Question 3 input</th> 
-              <th>Question 4</th>
-           
-              <th>Question 5</th>
-              <th>Question 6</th>
               
              
               {/* <th>logout time</th> */}
@@ -678,14 +668,14 @@ const Eventdetail = ({ username }) => {
                   <tr key={key}>
                     <td>{key + 1}</td>
                     <td>{eventdata.username}</td>
-                    <td>{eventdata.PreOneAns}</td>
-                    <td>{eventdata.preOneInput}</td>
-                    <td>{eventdata.PreTwoAns}</td>
-                    <td>{eventdata.preTwoInput}</td>
+                    <td>{eventdata.PostOneAns} [{eventdata.PostOneInput}]</td>
+                    {/* <td></td> */}
+                    <td>{eventdata.PostTwoAns}</td>
+                    {/* <td>{eventdata.postTwoInput}</td> */}
                
   
              {/* {threecheck=="3C" ? <td>{eventdata.thirdQuestionInput}</td>: <td>{eventdata.PreThreeAns}</td>}  */}
-                    <td>  {eventdata.PreThreeAns && eventdata.PreThreeAns.map((threedata,i)=>{
+                    <td>  {eventdata.PostThreeAns && eventdata.PostThreeAns.map((threedata,i)=>{
                           return(
                             <ul  key={i} className='checkbox-data'>
                                {threedata.isChecked && threedata.isChecked === true ? <li>{threedata.name}</li>:null } 
@@ -697,11 +687,12 @@ const Eventdetail = ({ username }) => {
                          
                         })}
                      </td>
-                    <td>{eventdata.preThreeInput}</td>
+                    {/* <td>{eventdata.postThreeInput}</td> */}
                     
                    
-                    <td>{eventdata.PreFourAns}</td>
-                    <td>  {eventdata.PreFiveAns && eventdata.PreFiveAns.map((fivedata,i)=>{
+                    <td>{eventdata.PostFourAns}</td>
+                    <td>{eventdata.PostFiveAns}</td>
+                    {/* <td>  {eventdata.PostFiveAns && eventdata.PostFiveAns.map((fivedata,i)=>{
                           return(
                             <ul  key={i} className='checkbox-data'>
                                {fivedata.isChecked && fivedata.isChecked === true ? <li>{fivedata.name}</li>:null } 
@@ -712,8 +703,8 @@ const Eventdetail = ({ username }) => {
                             
                          
                         })}
-                     </td>
-                    <td>{eventdata.PreSixAns}</td>
+                     </td> */}
+                    <td>{eventdata.PostSixAns}</td>
                  
                     {/* <td>{eventdata.PreSevenAns && eventdata.PreSevenAns.map((i, sevendata)=>{
                       console.log("test", sevendata.name),

@@ -32,7 +32,7 @@ const PostForm = () => {
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
     const [singleUsers, setsingleUsers] = useState('');
-
+    const [singleAdminUsers, setsingleAdminUsers] = useState('');
 
     const [onecheck, setoneCheck] = useState('');
     const [twocheck, setTwoCheck] = useState('');
@@ -58,6 +58,7 @@ const PostForm = () => {
     const [secondInput, setsecondInput] = useState("");
     const [second, setsecond] = useState(false);
     const [whatsappgroup, setwhatsappgroup] = useState("");
+    const [formbgImage, setformbgImage] = useState("");
 
 
 

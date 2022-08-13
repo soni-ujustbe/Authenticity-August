@@ -83,6 +83,7 @@ const PostForm = () => {
             PostFourAns: fourcheck,
             PostFiveAns: fivecheck,
             PostSixAns:sixcheck,
+            preFormSubmit: true,
             postfeedbackImg: postfeedbackImg,
             createdBy:Timestamp.now(),
 
@@ -240,21 +241,48 @@ const PostForm = () => {
             const isLogin = localStorage.getItem("ucore");
             const usersDetails = JSON.parse(isLogin);
             console.log(usersDetails);
-
-            const docRef = doc(db, "AdminMonthlyMeet", eventName);
+            const FormEventName = usersDetails.eventName;
+            const FormPhoneNumber = usersDetails.phoneNum;
+    
+    
+            const docRef = doc(db, FormEventName, FormPhoneNumber);
             const docSnap = await getDoc(docRef);
+            console.log(docSnap.data());
+
+            // if (docSnap.exists()) {
+            //     setsingleUsers(docSnap.data());
+            //     console.log(singleUsers);
+            //     console.log("Document data:", docSnap.data());
+            //     setpostfeedbackImg(docSnap.data().formImgUrls);
+            //     setmobileFormbg(docSnap.data().mobileUrls);
+            //     seteventName(docSnap.data().eventName);
+            //     setwhatsappgroup(docSnap.data().whatsappLink);
+            //     console.log(docSnap.data().whatsappLink);
+
+
+            // } else {
+            //     // doc.data() will be undefined in this case
+            //     console.log("No such document!");
+            // }
 
             if (docSnap.exists()) {
                 setsingleUsers(docSnap.data());
-                console.log(singleUsers);
-                console.log("Document data:", docSnap.data());
+                console.log("Single users" + singleUsers);
+                console.log("single Document data:", docSnap.data());
                 setpostfeedbackImg(docSnap.data().formImgUrls);
                 setmobileFormbg(docSnap.data().mobileUrls);
                 seteventName(docSnap.data().eventName);
-                // setwhatsappgroup(docSnap.data().whatsappLink);
-                console.log(docSnap.data().whatsappLink);
-
-
+                setwhatsappgroup(docSnap.data().whatsappLink);
+                const prefillformsubmit = docSnap.data().preFormSubmit;
+                if (prefillformsubmit) {
+    
+                    Router.push("/dashboard");
+                } else {
+    
+                    // alert("kindly fill the form");
+                }
+    
+    
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");

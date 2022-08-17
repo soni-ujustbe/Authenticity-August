@@ -107,6 +107,7 @@ const Eventdetail = ({ username }) => {
     
 
     seteventName("");
+    seteventData([]);
     setzoomlink("");
     setdate("");
     setformImgUrls("");
@@ -631,7 +632,7 @@ const Eventdetail = ({ username }) => {
       {/* map the function  */}
       <section className='box userlisting'>
         <h2>
-          User Details
+          Registration Form
         </h2>
         <table>
           <thead>
@@ -669,12 +670,12 @@ const Eventdetail = ({ username }) => {
                     <td>{key + 1}</td>
                     <td>{eventdata.username}</td>
                     <td>{eventdata.PostOneAns} [{eventdata.PostOneInput}]</td>
-                    {/* <td></td> */}
+                    
                     <td>{eventdata.PostTwoAns}</td>
-                    {/* <td>{eventdata.postTwoInput}</td> */}
+                    
                
   
-             {/* {threecheck=="3C" ? <td>{eventdata.thirdQuestionInput}</td>: <td>{eventdata.PreThreeAns}</td>}  */}
+             
                     <td>  {eventdata.PostThreeAns && eventdata.PostThreeAns.map((threedata,i)=>{
                           return(
                             <ul  key={i} className='checkbox-data'>
@@ -687,71 +688,20 @@ const Eventdetail = ({ username }) => {
                          
                         })}
                      </td>
-                    {/* <td>{eventdata.postThreeInput}</td> */}
+                    
                     
                    
                     <td>{eventdata.PostFourAns}</td>
                     <td>{eventdata.PostFiveAns}</td>
-                    {/* <td>  {eventdata.PostFiveAns && eventdata.PostFiveAns.map((fivedata,i)=>{
-                          return(
-                            <ul  key={i} className='checkbox-data'>
-                               {fivedata.isChecked && fivedata.isChecked === true ? <li>{fivedata.name}</li>:null } 
-                              
-                            </ul>
-                          )
-                        
-                            
-                         
-                        })}
-                     </td> */}
+                    
                     <td>{eventdata.PostSixAns}</td>
-                 
-                    {/* <td>{eventdata.PreSevenAns && eventdata.PreSevenAns.map((i, sevendata)=>{
-                      console.log("test", sevendata.name),
-                      <span>{sevendata.name}</span>
-                    })}
-                    </td> */}
-                 
+
                   
                     <td>{eventdata.phoneNum}</td>
                     <td>{eventdata.loginTime}</td>
                    
 
-                    {/* <td>{eventdata.PostOneAns}</td>
-                    <td>{eventdata.PostOneInput}</td>
-                    <td>{eventdata.PostTwoAns}</td>
-                    <td>{eventdata.PostTwoInput}</td>
-                    <td>{eventdata.PostThreeAns}</td>
-                    <td>{eventdata.PostFourAns}</td>
-                    <td>
-                        {eventdata.PostFiveAns && eventdata.PostFiveAns.map((fivedata,i)=>{
-                          return(
-                            <ul key={i} className='checkbox-data'>
-                               {fivedata.isChecked && fivedata.isChecked === true ? <li>{fivedata.name}</li>:null } 
-                              
-                            </ul>
-                          )
-                        
-                            
-                         
-                        })}
-                    </td>
-
-                     
-
-                    <td>    
-                        {eventdata.PostSixAns && eventdata.PostSixAns.map((six,i)=>{
-                          return(
-                            <ul  key={i} className='checkbox-data'>
-                               {six.isChecked && six.isChecked === true ? <li>{six.name}</li>:null } 
-                              
-                            </ul>
-                          )
-                        
-                            
-                         
-                        })} 
-                    </td> */}
+                    
                  
 
                   </tr>
@@ -765,6 +715,97 @@ const Eventdetail = ({ username }) => {
         </table>
       </section>
 
+
+      <section className='box userlisting'>
+        <h2>
+          Feedback Form
+        </h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Sr No.</th>
+              <th>Username</th>
+              
+              <th>Question 1</th>
+              <th>Question 2</th>
+              {/* <th>Question 2 input</th> */}
+              <th>Question 3</th>
+              {/* <th>Question 3 input</th> */}
+              
+              <th>Question 4</th>
+              {/* <th>Question 4 input</th> */}
+             
+              <th>Question 5</th>
+              {/* <th>Question 5 input</th> */}
+             
+            
+              <th>Question 6</th>
+              <th>Question 7</th>
+
+              <th>Ph No.</th>
+              <th>login time</th>
+              
+             
+              {/* <th>logout time</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {
+                eventData && eventData.map((eventdata, key = i) => {
+                console.log("event data", eventdata);
+                return (
+                  <tr key={key}>
+                    <td>{key + 1}</td>
+                    <td>{eventdata.username}</td>
+                    <td>{eventdata.PreOneAns} </td>
+
+                    <td>  {eventdata.PreTwoAns && eventdata.PreTwoAns.map((fivedata,i)=>{
+                          return(
+                            <ul  key={i} className='checkbox-data'>
+                               {fivedata.isChecked && fivedata.isChecked === true ? <li>{fivedata.name}</li>:null } 
+                              
+                            </ul>
+                          )
+                        
+                            
+                         
+                        })}
+                     </td>
+                    
+                    <td>{eventdata.PreThreeAns}</td>
+                    
+               
+  
+             
+                   
+                    
+                    
+                   
+                    <td>{eventdata.PreFourAns}</td>
+                    <td>{eventdata.PreFiveAns}</td>
+                    
+                    <td>{eventdata.PreSixAns}</td>
+
+                    <td>{eventdata.PreSevenAns}</td>
+
+                  
+                    <td>{eventdata.phoneNum}</td>
+                    <td>{eventdata.loginTime}</td>
+                   
+
+                    
+                 
+
+                  </tr>
+                )
+
+              })
+            }{
+              eventData ? <div></div> : null
+            }
+          </tbody>
+        </table>
+      </section>
 
     </Layout>
   );

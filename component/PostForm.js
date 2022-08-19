@@ -12,7 +12,7 @@ const db = getFirestore();
 //Image import
 import topbannerimg from '../public/images/topbanner.png';
 
-const twocheckdata = [
+const fivecheckdata = [
     { name: "4pm to 6pm" },
     { name: "5pm to 7pm" },
     { name: "6pm to 8pm" },
@@ -42,10 +42,10 @@ const PostFormtwo = () => {
 
 
     const [onecheck, setoneCheck] = useState('');
-    const [twocheck, setTwoCheck] = useState(twocheckdata);
+    const [twocheck, setTwoCheck] = useState('');
     const [threecheck, setThreeCheck] = useState('');
     const [fourcheck, setFourCheck] = useState([]);
-    const [fivecheck, setFiveCheck] = useState('');
+    const [fivecheck, setFiveCheck] = useState(fivecheckdata);
 
     const [sixcheck, setSixCheck] = useState("");
     const [sevencheck, setSevenCheck] = useState(sevencheckdata);
@@ -89,6 +89,7 @@ const PostFormtwo = () => {
             PreFourAns: fourcheck,
             PreFiveAns: fivecheck,
             PreSixAns:sixcheck,
+            PreSevenAns: sevencheck,
             prefeedbackImg: postfeedbackImg,
             createdBy:Timestamp.now(),
 
@@ -121,11 +122,11 @@ const PostFormtwo = () => {
         //clear all field after submit the data
         setoneCheck("");
         setOneQuestionInput("");
-        setTwoCheck(twocheck);
+        setTwoCheck("");
         setTwoQuestionInput("");
         setThreeCheck("")
         setFourCheck("");
-        setFiveCheck("");
+        setFiveCheck(fivecheck);
         setSixCheck("");
         setSevenCheck(sevencheck);
         // setformbgImage("");
@@ -172,7 +173,7 @@ const PostFormtwo = () => {
     const questionFive = (event) => {
         const target = event.target;
         if (target.checked) {
-            setFiveCheck(target.value);
+            setFourCheck(target.value);
             console.log(event.target.value);
         }
     };
@@ -189,11 +190,11 @@ const PostFormtwo = () => {
 
     //     }
     //    else{
-        let tempSevenData=twocheck.map((twodetails)=>
-        twodetails.name === name ? { ...twodetails, isChecked:checked } : twodetails);
-        setTwoCheck(tempSevenData);
+        let tempSevenData=fivecheck.map((fivedetails)=>
+        fivedetails.name === name ? { ...fivedetails, isChecked:checked } : fivedetails);
+        setFiveCheck(tempSevenData)
 
-        console.log("twoquestion",twocheck);
+        console.log("fivetquestion",fivecheck);
     //    }
        
         // const target = event.target;
@@ -223,11 +224,11 @@ const PostFormtwo = () => {
     };
 
 
-    // useEffect(() =>{
-    //     setFiveCheck(fivecheckdata);
+    useEffect(() =>{
+        setFiveCheck(fivecheckdata);
      
 
-    // },[])
+    },[])
 
     useEffect(() =>{
         setSevenCheck(sevencheckdata);
@@ -324,6 +325,7 @@ const PostFormtwo = () => {
                 {/* form start  */}
 
                 {
+
                     formsubmit ? <div className="sucess">
                         <h2>  Thank you for sharing your responses. </h2>
 
@@ -453,22 +455,22 @@ const PostFormtwo = () => {
 
                                     
                                     <li className='checkbox-style'>
-                                        {twocheck && twocheck.map((twodata)=>(
+                                        {fivecheck && fivecheck.map((fivedata)=>(
                                         <>
 
                                         <div > 
     
                                                     <input
 
-                                                        id={twodata.name}
-                                                        value={twodata}
-                                                        name={twodata.name}
-                                                        checked={twodata?.isChecked || false }
+                                                        id={fivedata.name}
+                                                        value={fivedata}
+                                                        name={fivedata.name}
+                                                        checked={fivedata?.isChecked || false }
                                                         type="checkbox"
                                                     
                                                         onChange={questionTwo} />
                                                 
-                                                    <label  className='checkbox-label' htmlFor={twodata.name}> {twodata.name} </label>
+                                                    <label  className='checkbox-label' htmlFor={fivedata.name}> {fivedata.name} </label>
                                         </div>
                                         </>
                                         ))}
@@ -673,7 +675,7 @@ const PostFormtwo = () => {
                                                 name="questionFive"
                                                 type="radio"
                                                 onChange={questionFive}
-                                                checked={fivecheck == 'Yes'} />
+                                                checked={fourcheck == 'Yes'} />
                                             <div className='custom_radio'></div>
                                             Yes</label>
                                     </li>
@@ -686,7 +688,7 @@ const PostFormtwo = () => {
                                                 name="questionFive"
                                                 type="radio"
                                                 onChange={questionFive}
-                                                checked={fivecheck == 'No'} />
+                                                checked={fourcheck == 'No'} />
                                             <div className='custom_radio'></div>
                                             No</label>
                                     </li>

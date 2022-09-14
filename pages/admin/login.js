@@ -11,7 +11,7 @@ import Router from 'next/router';
 // import bgimg from "../../public/images/backgroundfinal.jpeg"
 import officeimg from "../../public/images/office.png";
 import ujblogoimg from '../../public/images/ujblogo.png';
-
+// edit this page
 
 const authlog = getAuth();
 
